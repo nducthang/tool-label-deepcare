@@ -3,4 +3,4 @@ numpy
 streamlit
 xlsxwriter
 matplotlib
-
+gensim

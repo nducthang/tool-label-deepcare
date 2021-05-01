@@ -1,16 +1,14 @@
 import streamlit as st
 import pandas as pd
 
-def app():
+def app(params):
+    data = params['data']
     # Tìm kiếm xem ID nào chưa gán
-    data = pd.read_csv("./data/data.csv")
     for i in range(len(data)):
         if data.iloc[i]['is_labeled'] == 0:
             selected = i
             break
 
-    # Chuyển sang dạng list
-    data['question_similaries'] = data['question_similaries'].apply(eval)
     st.title("Gán nhãn câu hỏi tương đồng DeepCare.IO")
     id = st.number_input('ID:', min_value=0, value=selected, max_value=len(data)-1)
     st.write('Tình trạng: {}'.format('**Đã gán nhãn**' if data.iloc[id]['is_labeled']==1 else '**Chưa gán nhãn**'))

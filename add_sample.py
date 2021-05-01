@@ -1,10 +1,9 @@
 import streamlit as st
 import pandas as pd
 
-def app():
-    # Đọc dữ liệu
-    data = pd.read_csv("./data/data.csv")
 
+def app(params):
+    data = params['data']
     st.title('Thêm dữ liệu')
     # chia cột
     left, right = st.beta_columns(2)
