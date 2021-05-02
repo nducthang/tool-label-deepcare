@@ -1,8 +1,8 @@
 import streamlit as st
-import pandas as pd
+from utils import load_data
 
-def app(params):
-    data = params['data']
+def app(params = None):
+    data = load_data()
     # Tìm kiếm xem ID nào chưa gán
     for i in range(len(data)):
         if data.iloc[i]['is_labeled'] == 0:
@@ -49,7 +49,7 @@ def app(params):
 
     if delete:
         data.drop(id,inplace=True)
-        data.reset_index(inplace=True)
+        # data.reset_index(inplace=True)
         data.to_csv('./data/data.csv', index=False)
         st.info('Xóa dữ liệu thành công! Ấn phím R để xem lại cập nhật!')
 

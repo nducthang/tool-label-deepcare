@@ -1,9 +1,7 @@
 import streamlit as st
 
-def lower(row):
-    return row.lower()
 
-def app(params):
+def app(params = None):
     bm25_obj = params['BM25']
     texts = params['texts']
     dictionary = params['dictionary']
