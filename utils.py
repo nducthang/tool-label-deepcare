@@ -34,3 +34,15 @@ def load_bm25():
     bm25_obj = bm25.BM25(corpus)
     params = {"BM25": bm25_obj, "texts": texts, 'dictionary': dictionary}
     return params
+
+def find_question_similary(query, params, number = 10):
+    lst_question_similary = []
+    bm25_obj = params['BM25']
+    texts = params['texts']
+    dictionary = params['dictionary']
+    query_doc = dictionary.doc2bow(query.split())
+    scores = bm25_obj.get_scores(query_doc)
+    best_docs = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:number + 1]
+    for i, idx in enumerate(best_docs):
+        lst_question_similary.append(" ".join(texts[idx]))
+    return lst_question_similary[1:]
