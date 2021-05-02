@@ -3,4 +3,4 @@ numpy
 streamlit
 xlsxwriter
 matplotlib
-gensim
+gensim==3.8.3
