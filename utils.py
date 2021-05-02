@@ -25,10 +25,10 @@ def preprocessing(row):
 def load_bm25():
     data = load_data()
     lst_question = data['question'].apply(lambda x: preprocessing(str(x))).tolist()
-    lst_answer = data['answer'].apply(lambda x: preprocessing(str(x))).tolist()
-    lst_qa = lst_question + lst_answer
+    # lst_answer = data['answer'].apply(lambda x: preprocessing(str(x))).tolist()
+    # lst_qa = lst_question + lst_answer
 
-    texts = [item.split() for item in lst_qa]
+    texts = [item.split() for item in lst_question]
     dictionary = corpora.Dictionary(texts)
     corpus = [dictionary.doc2bow(text) for text in texts]
     bm25_obj = bm25.BM25(corpus)
