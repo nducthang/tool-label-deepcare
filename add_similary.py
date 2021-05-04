@@ -24,11 +24,11 @@ def app(params = None):
     values = []
     if data.iloc[id]['is_labeled'] == 0:
         # Chưa được gán nhãn
-        lst_question_similary = find_question_similary(txt_quesion, params)
+        lst_question_similary, values = find_question_similary(txt_quesion, params)
         min_value = 1
         number_question = right.number_input('Số câu hỏi tương đồng muốn thêm:', min_value=1, max_value=10)
         for i in range(number_question):
-            values.append(right.text_input(f'Câu hỏi tương đồng {i+1}', value = lst_question_similary[i]))
+            values.append(right.text_input('Câu hỏi tương đồng {} (Score: {})'.format(i+1, values[i]), value = lst_question_similary[i]))
     else:
         # Đã được gán nhãn
         min_value = len(data.iloc[id]['question_similaries'])

@@ -15,4 +15,4 @@ def app(params = None):
         scores = bm25_obj.get_scores(query_doc)
         best_docs = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:10]
         for i, idx in enumerate(best_docs):
-            st.markdown("**{}** - **Question:** {}".format(i + 1, " ".join(texts[idx])))
+            st.markdown("**{}** - **Score:** {} - **Question:** {}".format(i + 1, scores[idx] ," ".join(texts[idx])))
