@@ -15,7 +15,7 @@ def app():
     values = []
     min_value = 0
     number_question = right.number_input('Số câu hỏi tương đồng muốn thêm', min_value=min_value, max_value=10, value=int())
-    for i in range(number_question):
+    for i in range(int(number_question)):
         values.append(right.text_input(f'Câu hỏi tương đồng {i+1}'))
     
     # Vùng button
